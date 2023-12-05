@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extension Detection</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- Overlay for #extensionCheckModal -->
+  <div id="extensionCheckModalOverlay" class="modal-backdrop" style="display: none; background-color: rgba(0, 0, 0, 0.6);"></div>
+
+  <!-- Modal for #check -->
+  <div id="extensionCheckModal" class="modal" style="display: none;" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p id="check">Extension is not installed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay for #extensionsListModal -->
+  <div id="extensionsListModalOverlay" class="modal-backdrop" style="display: none; background-color: rgba(0, 0, 0, 0.6);"></div>
+
+  <!-- Modal for #extensionListAndDisableBtn -->
+  <div id="extensionsListModal" class="modal" style="display: none;" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Installed Extensions</h5>
+        </div>
+        <div class="modal-body">
+            <ul id="extensionList"></ul>
+            <button id="disableBtn">Disable all extensions</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="goodToGo">
+    <p>Good to go. Please proceed with the assessment.</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to show modal
+    function showModal(modalId) {
+      const modalOverlay = document.getElementById(`${modalId}Overlay`);
+      modalOverlay.style.display='block';
+      const modalElement = document.getElementById(modalId);
+      modalElement.style.display = 'block';
+      modalElement.classList.add('show');
+    }
+
+    // Function to hide modal
+    function hideModal(modalId) {
+      const modalOverlay=document.getElementById(`${modalId}Overlay`);
+      modalOverlay.style.display='none';
+      const modalElement = document.getElementById(modalId);
+      if (modalElement.style.display === 'block') {
+        modalElement.style.display = 'none';
+        modalElement.classList.remove('show');
+      }
+    }
+
+    showModal('extensionCheckModal');
+  </script>
+
+</body>
+</html>
